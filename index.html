@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Craft Digital Agency</title>
+  <meta name="description" content="Craft Digital Agency designs and builds websites, brands and digital products.">
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --text: #1c1b19;
+      --muted: #5f5c55;
+      --line: #e3dfd6;
+      --accent: #c2410c;
+      --accent-text: #ffffff;
+      --max: 1100px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141413;
+        --surface: #1d1c1a;
+        --text: #f2efe8;
+        --muted: #a8a399;
+        --line: #2f2d29;
+        --accent: #f97316;
+        --accent-text: #141413;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    .nav ul { display: flex; gap: 28px; list-style: none; }
+    .nav ul a { text-decoration: none; color: var(--muted); font-size: 0.95rem; }
+    .nav ul a:hover { color: var(--text); }
+
+    /* Buttons */
+    .btn {
+      display: inline-block; padding: 12px 22px; border-radius: 999px;
+      background: var(--accent); color: var(--accent-text);
+      text-decoration: none; font-weight: 600; border: 0; cursor: pointer; font-size: 1rem;
+    }
+    .btn:hover { filter: brightness(1.08); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+
+    /* Hero */
+    .hero { padding-block: 110px 90px; }
+    .eyebrow { color: var(--accent); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.05; letter-spacing: -0.03em;
+      margin: 14px 0 22px; max-width: 14ch;
+    }
+    .hero p { font-size: 1.2rem; color: var(--muted); max-width: 52ch; }
+    .hero .actions { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+
+    /* Sections */
+    section { padding-block: 80px; border-top: 1px solid var(--line); }
+    .section-head { margin-bottom: 40px; }
+    .section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); letter-spacing: -0.02em; line-height: 1.15; }
+    .section-head p { color: var(--muted); margin-top: 10px; max-width: 56ch; }
+
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px;
+    }
+    .card .num { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
+    .card h3 { font-size: 1.2rem; margin: 10px 0 8px; }
+    .card p { color: var(--muted); font-size: 0.97rem; }
+
+    /* Work */
+    .work .tile {
+      aspect-ratio: 4 / 3; border-radius: 14px; padding: 22px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      color: #fff; position: relative; overflow: hidden;
+    }
+    .work .tile small { opacity: 0.85; font-size: 0.85rem; }
+    .work .tile strong { font-size: 1.25rem; }
+    .t1 { background: linear-gradient(135deg, #7c2d12, #ea580c); }
+    .t2 { background: linear-gradient(135deg, #1e3a8a, #0ea5e9); }
+    .t3 { background: linear-gradient(135deg, #14532d, #65a30d); }
+
+    /* Process */
+    .steps { counter-reset: step; display: grid; gap: 0; }
+    .step {
+      display: grid; grid-template-columns: 80px 1fr; gap: 20px;
+      padding: 24px 0; border-bottom: 1px solid var(--line);
+    }
+    .step:last-child { border-bottom: 0; }
+    .step::before {
+      counter-increment: step; content: "0" counter(step);
+      font-weight: 700; color: var(--accent); font-size: 1.4rem;
+    }
+    .step h3 { font-size: 1.15rem; }
+    .step p { color: var(--muted); }
+
+    /* Contact */
+    .contact-box {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+      padding: 48px; display: grid; gap: 40px; grid-template-columns: 1fr 1fr;
+    }
+    form { display: grid; gap: 14px; }
+    label { font-size: 0.9rem; font-weight: 600; display: grid; gap: 6px; }
+    input, textarea {
+      font: inherit; padding: 12px 14px; border-radius: 10px;
+      border: 1px solid var(--line); background: var(--bg); color: var(--text);
+    }
+    input:focus, textarea:focus, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    textarea { min-height: 120px; resize: vertical; }
+    .form-note { font-size: 0.9rem; color: var(--muted); min-height: 1.4em; }
+
+    footer { padding: 32px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    @media (max-width: 720px) {
+      .nav ul { display: none; }
+      .hero { padding-block: 70px 60px; }
+      section { padding-block: 60px; }
+      .contact-box { grid-template-columns: 1fr; padding: 28px; }
+      .step { grid-template-columns: 56px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="wrap nav" aria-label="Main">
+      <a href="#top" class="logo">Craft<span>.</span> Digital</a>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div class="eyebrow">Craft Digital Agency</div>
+      <h1>Websites and brands, made with care.</h1>
+      <p>We design and build digital products for teams that want work done properly: clear strategy, sharp design, and code that holds up.</p>
+      <div class="actions">
+        <a href="#contact" class="btn">Book a call</a>
+        <a href="#work" class="btn btn-ghost">See our work</a>
+      </div>
+    </div>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What we do</h2>
+          <p>Four services. One small team that sees each project through from first sketch to launch.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="num">01</div>
+            <h3>Brand identity</h3>
+            <p>Naming, logo, type and colour systems, and the guidelines to keep them consistent.</p>
+          </div>
+          <div class="card">
+            <div class="num">02</div>
+            <h3>Web design</h3>
+            <p>Responsive sites built around what your visitors need to find and do.</p>
+          </div>
+          <div class="card">
+            <div class="num">03</div>
+            <h3>Development</h3>
+            <p>Fast, accessible front ends and CMS builds your team can update without us.</p>
+          </div>
+          <div class="card">
+            <div class="num">04</div>
+            <h3>Growth &amp; SEO</h3>
+            <p>Analytics, search visibility, and conversion testing after launch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Selected work</h2>
+          <p>A few recent projects.</p>
+        </div>
+        <div class="grid">
+          <div class="tile t1"><small>Brand + Website</small><strong>Ember Coffee Co.</strong></div>
+          <div class="tile t2"><small>Product Design</small><strong>Tidewater Finance</strong></div>
+          <div class="tile t3"><small>E‑commerce</small><strong>Greenleaf Supply</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How we work</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><div><h3>Discover</h3><p>We learn your goals, audience, and constraints, then agree on scope and success measures.</p></div></div>
+          <div class="step"><div><h3>Design</h3><p>Wireframes, then visual design, reviewed with you at each stage.</p></div></div>
+          <div class="step"><div><h3>Build</h3><p>Clean, tested code, shared on a staging site as it comes together.</p></div></div>
+          <div class="step"><div><h3>Launch &amp; improve</h3><p>We ship, measure, and keep refining based on real usage.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div>
+            <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.4rem); letter-spacing: -0.02em; line-height: 1.15;">Let's build something.</h2>
+            <p style="color: var(--muted); margin: 14px 0 24px;">Tell us about your project and we'll reply within two business days.</p>
+            <p><strong>Email</strong><br><a href="mailto:hello@craftdigital.agency">hello@craftdigital.agency</a></p>
+          </div>
+          <form id="contact-form">
+            <label>Name <input name="name" required autocomplete="name"></label>
+            <label>Email <input type="email" name="email" required autocomplete="email"></label>
+            <label>Project details <textarea name="message" required></textarea></label>
+            <button class="btn" type="submit">Send message</button>
+            <p class="form-note" id="form-note" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Craft Digital Agency</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Placeholder handler: no backend is wired up yet.
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('form-note').textContent = 'Thanks! We’ll be in touch soon.';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
